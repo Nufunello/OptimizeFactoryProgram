@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptimizeFactoryProgram", "OptimizeFactoryProgram\OptimizeFactoryProgram.csproj", "{ECAF2849-32B1-4BA8-A28E-4779D3C91FED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECAF2849-32B1-4BA8-A28E-4779D3C91FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECAF2849-32B1-4BA8-A28E-4779D3C91FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECAF2849-32B1-4BA8-A28E-4779D3C91FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECAF2849-32B1-4BA8-A28E-4779D3C91FED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10F5473B-58BF-43E6-A7A2-D9791E824C6F}
+	EndGlobalSection
+EndGlobal
