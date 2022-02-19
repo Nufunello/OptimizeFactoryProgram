@@ -1,11 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using OptimizeFactoryProgram.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<DBContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("AppDb")));
 
 var app = builder.Build();
-
+using (var serviceScope = app.Services.CreateScope())
+{
+    var context = serviceScope.ServiceProvider.GetService<DBContext>();
+    context.Database.EnsureDeleted();
+    context.Database.EnsureCreated();
+    context.Seed();
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
