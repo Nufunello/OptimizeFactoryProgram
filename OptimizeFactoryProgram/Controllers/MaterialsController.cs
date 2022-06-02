@@ -14,14 +14,14 @@ namespace OptimizeFactoryProgram.Controllers
             return db.Materials.ToArray();
         }
         [HttpPost]
-        public ActionResult<Material> Post(Material material)
+        public ActionResult<Guid> Post(Material material)
         {
             if (ModelState.IsValid)
             {
                 using var db = new DBContext();
-                db.Materials.Add(material);
+                var savedMaterial = db.Materials.Add(material);
                 db.SaveChanges();
-                return new OkResult();
+                return savedMaterial.Entity.Id;
             }
             else
             {

@@ -7,6 +7,7 @@ namespace OptimizeFactoryProgram.Context
         public DbSet<Material> Materials { get; set; }
         public DbSet<Price<Material>> PricesMaterial { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Product.Ingredient> Ingredients { get; set; }
         public DbSet<Price<Product>> PricesProduct { get; set; }
         public DbSet<MaterialAvailable> MaterialAvailable { get; set; }
         public DBContext()
@@ -49,44 +50,60 @@ namespace OptimizeFactoryProgram.Context
             context.PricesMaterial.Add(new Price<Material> { PriceOf = context.Materials.Where(x => x.Name == "Папір").First(), Count = 1, Cost = 1 });
             context.SaveChanges();
 
-            context.Products.Add
-            (
-                new Product
+            {
+                var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    Name = "Молоток",
-                    Measure = Measures.apiece,
-                    Receipt = new List<Product.Ingredient>
+                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Залізо").First(), Count = 0.02 }),
+                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Дерево").First(), Count = 4 })
+                };
+                
+                context.SaveChanges();
+
+                context.Products.Add
+                (
+                    new Product
                     {
-                        new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Залізо").First(), Count = 0.02 },
-                        new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Дерево").First(), Count = 4 }
+                        Name = "Молоток",
+                        Measure = Measures.apiece,
+                        Ingridients = receipt.Select(x => x.Entity).ToList()
                     }
-                }
-            );
-            context.Products.Add
-            (
-                new Product
+                );
+            }
+            {
+                var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    Name = "Золоте кільце",
-                    Measure = Measures.apiece,
-                    Receipt = new List<Product.Ingredient>
+                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Залізо").First(), Count = 0.02 }),
+                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Золото").First(), Count = 0.03 })
+                };
+                context.SaveChanges();
+
+                context.Products.Add
+                (
+                    new Product
                     {
-                        new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Залізо").First(), Count = 0.02 },
-                        new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Золото").First(), Count = 0.03 }
+                        Name = "Золоте кільце",
+                        Measure = Measures.apiece,
+                        Ingridients = receipt.Select(x => x.Entity).ToList()
                     }
-                }
-            );
-            context.Products.Add
-            (
-                new Product
+                );
+            }
+            {
+                var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    Name = "Зошит",
-                    Measure = Measures.apiece,
-                    Receipt = new List<Product.Ingredient>
+                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Папір").First(), Count = 60 })
+                };
+                context.SaveChanges();
+                
+                context.Products.Add
+                (
+                    new Product
                     {
-                        new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Папір").First(), Count = 60 },
+                        Name = "Зошит",
+                        Measure = Measures.apiece,
+                        Ingridients = receipt.Select(x => x.Entity).ToList()
                     }
-                }
-            );
+                );
+            }
             context.SaveChanges();
 
             context.PricesProduct.Add
@@ -102,6 +119,7 @@ namespace OptimizeFactoryProgram.Context
                 new Price<Product> { PriceOf = context.Products.Where(x => x.Name == "Зошит").First(), Count = 1, Cost = 5 }
             );
             context.SaveChanges();
+
         }
     }
 }
