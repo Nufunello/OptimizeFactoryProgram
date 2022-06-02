@@ -14,7 +14,6 @@ namespace OptimizeFactoryProgram.Controllers
             using var db = new DBContext();
             return db.Products
                 .Include(x => x.Ingridients)
-                .ThenInclude(x => x.Material)
                 .ToArray();
         }
         [HttpPost]
@@ -24,8 +23,15 @@ namespace OptimizeFactoryProgram.Controllers
             {
                 using var db = new DBContext();
                 var savedProduct = db.Products.Add(product);
-                db.SaveChanges();
-                return savedProduct.Entity.Id;
+                try
+                {
+                    db.SaveChanges();
+                    return savedProduct.Entity.Id;
+                }
+                catch (Exception)
+                {
+                    return BadRequest("Invalid Material field");
+                }
             }
             else
             {

@@ -53,8 +53,8 @@ namespace OptimizeFactoryProgram.Context
             {
                 var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Залізо").First(), Count = 0.02 }),
-                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Дерево").First(), Count = 4 })
+                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Залізо").First().Id, Count = 0.02 }),
+                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Дерево").First().Id, Count = 4 })
                 };
                 
                 context.SaveChanges();
@@ -72,8 +72,8 @@ namespace OptimizeFactoryProgram.Context
             {
                 var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Залізо").First(), Count = 0.02 }),
-                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Золото").First(), Count = 0.03 })
+                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Залізо").First().Id, Count = 0.02 }),
+                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Золото").First().Id, Count = 0.03 })
                 };
                 context.SaveChanges();
 
@@ -90,7 +90,7 @@ namespace OptimizeFactoryProgram.Context
             {
                 var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    context.Ingredients.Add(new Product.Ingredient { Material = context.Materials.Where(x => x.Name == "Папір").First(), Count = 60 })
+                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Папір").First().Id, Count = 60 })
                 };
                 context.SaveChanges();
                 

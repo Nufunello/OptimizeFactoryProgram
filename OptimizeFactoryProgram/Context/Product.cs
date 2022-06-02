@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OptimizeFactoryProgram.Context
@@ -12,9 +13,12 @@ namespace OptimizeFactoryProgram.Context
         {
             public Guid Id { get; set; } = Guid.NewGuid();
             [Required]
+            public Guid MaterialId { get; set; }
+            [ForeignKey("MaterialId")]
+            [ValidateNever]
             public Material Material { get; set; } = default!;
             [Required]
-            public double Count { get; set; } = default!;
+            public double Count { get; set; }
         }
         [Required]
         public virtual ICollection<Ingredient> Ingridients { get; set; }
