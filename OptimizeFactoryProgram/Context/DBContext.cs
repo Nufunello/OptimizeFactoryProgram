@@ -90,7 +90,7 @@ namespace OptimizeFactoryProgram.Context
             {
                 var receipt = new List<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product.Ingredient>>
                 {
-                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Папір").First().Id, Count = 60 })
+                    context.Ingredients.Add(new Product.Ingredient { MaterialId = context.Materials.Where(x => x.Name == "Папір").First().Id, Count = 50 })
                 };
                 context.SaveChanges();
                 

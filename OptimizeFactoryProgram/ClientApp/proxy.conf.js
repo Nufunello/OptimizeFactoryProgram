@@ -9,6 +9,7 @@ const PROXY_CONFIG = [
       "/weatherforecast",
       "/materials",
       "/products",
+      "/solution"
    ],
     target: target,
     secure: false,
