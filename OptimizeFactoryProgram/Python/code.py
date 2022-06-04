@@ -91,5 +91,5 @@ obj = list(map(lambda element: -element, obj))
 bnd = [(0, float("inf"))] #x >= 0
 opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq, bounds=bnd)
 
-print(opt.x)
+print(list(opt.x))
 print(list(map(lambda receipt: receipt.product.name, receipts)))
