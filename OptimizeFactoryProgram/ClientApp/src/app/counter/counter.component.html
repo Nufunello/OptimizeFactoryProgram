@@ -1,7 +1,24 @@
-<h1>Counter</h1>
+<h1 id="tableLabel">Продукти</h1>
 
-<p>This is a simple example of an Angular component.</p>
+<div class="demo-button-container">
+  <a routerLink="/add-product">
+      <button mat-raised-button class="demo-button" color="primary">
+          Новий Продукт
+      </button>
+  </a>
+</div>
 
-<p aria-live="polite">Current count: <strong>{{ currentCount }}</strong></p>
-
-<button class="btn btn-primary" (click)="incrementCounter()">Increment</button>
+<table class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th>Назві</th>
+      <th>Од. Вимірювання</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.name }}</td>
+      <td>{{ getKey(product.measure) }}</td>
+    </tr>
+  </tbody>
+</table>

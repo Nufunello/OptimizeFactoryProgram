@@ -1,0 +1,10 @@
+{
+    "/materials": {
+      "target": "https://localhost:7211",
+      "secure": false
+    },
+    "/products": {
+      "target": "https://localhost:7211",
+      "secure": false
+    }
+}

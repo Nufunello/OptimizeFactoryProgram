@@ -1,0 +1,57 @@
+<form [formGroup]="researchForm" class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Додати Продукт</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="full-width">
+              <input formControlName="name" matInput placeholder="Назва">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="full-width">
+              <mat-label>Матеріал</mat-label>
+              <mat-select formControlName="material">
+                  <mat-option *ngFor="let material of materials" [value]="material">
+                      {{ material.name }}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="full-width">
+              <mat-label>Од. Вимірювання</mat-label>
+              <mat-select formControlName="measure">
+                  <mat-option [value]="0">
+                      Штуки
+                  </mat-option>
+                  <mat-option [value]="1">
+                      Літри
+                  </mat-option>
+                  <mat-option [value]="2">
+                      Кілограми
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <mat-label>К-ість Матеріалу</mat-label>
+            <input type="number" formControlName="count" matInput placeholder="К-ість">
+          </mat-form-field>
+        </div>
+      </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="onSubmit()" mat-raised-button color="primary">Зберігти</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
